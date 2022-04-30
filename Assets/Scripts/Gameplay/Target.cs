@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour {
+public class Target : MonoBehaviour
+{
 
-	public float speed;
+    public float speed;
 
-	// Use this for initialization
-	void Start () {
-		DontDestroyOnLoad(gameObject);
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		RotateMovement ();
-	}
+    // Use this for initialization
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
 
-	void RotateMovement(){
-		transform.Rotate (0, 0, speed * Time.deltaTime);
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        RotateMovement();
+    }
+
+    public void RotateMovement()
+    {
+        transform.Rotate(0, 0, speed * Time.deltaTime);
+    }
 }

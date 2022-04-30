@@ -19,13 +19,13 @@ public class Spawner : MonoBehaviour
 
     void Awake()
     {
-        maxPin -= GameController.instance.currentScore;
         totalPin = maxPin;
     }
 
     // Use this for initialization
     void Start()
     {
+        maxPin -= GameController.instance.currentScore;
         InitializeSpawnVariables();
     }
 

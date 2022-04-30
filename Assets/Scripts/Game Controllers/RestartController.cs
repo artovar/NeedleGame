@@ -17,7 +17,7 @@ public class RestartController : MonoBehaviour
     void Start()
     {
         target_save = GameObject.Find("Target");
-        target_save.SetActive(false);
+        target_save.transform.position = new Vector3(100, 100, 100);
         InitializeVariables();
         if (GameController.instance != null && MusicController.instance != null)
         {
@@ -38,7 +38,7 @@ public class RestartController : MonoBehaviour
     public void RewardButton()
     {
         GameObject rewarded = GameObject.Find("RewardedAd");
-        target_save.SetActive(true);
+        target_save.tag = "Retry";
         rewarded.GetComponent<AdMobRewarded>().RequestRewarded();
 
     }

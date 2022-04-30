@@ -36,13 +36,18 @@ public class GameplayController : MonoBehaviour
         GameObject retry_target = GameObject.FindGameObjectWithTag("Retry");
         if (retry_target != null)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Target"));
-			retry_target.SetActive(true);
+            GameObject remove_target = GameObject.FindGameObjectWithTag("Target");
+            retry_target.transform.position = remove_target.transform.position;
+            Destroy(remove_target);
             retry_target.tag = "Target";
-			
-
+            retry_target.GetComponent<Target>().enabled = true;
+            score = GameController.instance.currentScore;
+            UpdateGameplayController();
         }
-        InitialGameplayVariables();
+        else
+        {
+            InitialGameplayVariables();
+        }
     }
 
     // Update is called once per frame
