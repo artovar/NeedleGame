@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
 
     void Awake()
     {
+        maxPin -= GameController.instance.currentScore;
         totalPin = maxPin;
     }
 

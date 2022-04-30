@@ -4,33 +4,54 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RestartController : MonoBehaviour {
+public class RestartController : MonoBehaviour
+{
 
-	public Text scoreText;
+    public Text scoreText;
 
-	private int score;
+    private int score;
 
-	// Use this for initialization
-	void Start () {
-		InitializeVariables ();
-		if(GameController.instance != null && MusicController.instance != null){
-			if(GameController.instance.isMusicOn){
-				MusicController.instance.StopAllSound ();
-				MusicController.instance.PlayFailedSound ();
-			}
-		}
-	}
+    private GameObject target_save;
 
-	void InitializeVariables(){
-		score = GameController.instance.currentScore;
-		scoreText.text = score.ToString ();
-	}
+    // Use this for initialization
+    void Start()
+    {
+        target_save = GameObject.Find("Target");
+        target_save.SetActive(false);
+        InitializeVariables();
+        if (GameController.instance != null && MusicController.instance != null)
+        {
+            if (GameController.instance.isMusicOn)
+            {
+                MusicController.instance.StopAllSound();
+                MusicController.instance.PlayFailedSound();
+            }
+        }
+    }
 
-	public void RestartButton(){
-		SceneManager.LoadScene ("Gameplay");
-	}
+    void InitializeVariables()
+    {
+        score = GameController.instance.currentScore;
+        scoreText.text = score.ToString();
+    }
 
-	public void ExitButton(){
-		SceneManager.LoadScene ("Main Menu");
-	}
+    public void RewardButton()
+    {
+        GameObject rewarded = GameObject.Find("RewardedAd");
+        target_save.SetActive(true);
+        rewarded.GetComponent<AdMobRewarded>().RequestRewarded();
+
+    }
+
+    public void RestartButton()
+    {
+
+        Destroy(target_save);
+        SceneManager.LoadScene("Gameplay");
+    }
+
+    public void ExitButton()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

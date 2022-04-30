@@ -4,70 +4,95 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameplayController : MonoBehaviour {
-	public static GameplayController instance;
+public class GameplayController : MonoBehaviour
+{
+    public static GameplayController instance;
 
-	public int score;
-	public Text scoreText;
-	public GameObject notification;
+    public int score;
+    public Text scoreText;
+    public GameObject notification;
 
-	private bool doubleBack; 
+    private bool doubleBack;
 
-	void Awake(){
-		CreateInstance ();
-	}
+    void Awake()
+    {
+        CreateInstance();
+    }
 
-	// Use this for initialization
-	void Start () {
-		if(GameController.instance != null && MusicController.instance != null){
-			if (GameController.instance.isMusicOn) {
-				MusicController.instance.PlayGameplaySound ();
-			} else {
-				MusicController.instance.StopAllSound ();
-			}
-		}
-		InitialGameplayVariables ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		UpdateGameplayController ();
+    // Use this for initialization
+    void Start()
+    {
+        if (GameController.instance != null && MusicController.instance != null)
+        {
+            if (GameController.instance.isMusicOn)
+            {
+                MusicController.instance.PlayGameplaySound();
+            }
+            else
+            {
+                MusicController.instance.StopAllSound();
+            }
+        }
+        GameObject retry_target = GameObject.FindGameObjectWithTag("Retry");
+        if (retry_target != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Target"));
+			retry_target.SetActive(true);
+            retry_target.tag = "Target";
+			
 
-		if(doubleBack == true){
-			if(Input.GetKeyDown(KeyCode.Escape)){
-				SceneManager.LoadScene ("Main Menu");
-			}
-		}
+        }
+        InitialGameplayVariables();
+    }
 
-		if(Input.GetKeyDown(KeyCode.Escape)){
-			notification.SetActive (true);
-			doubleBack = true;
-			StartCoroutine (ShowTimer ());
-		}
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateGameplayController();
 
-	void CreateInstance(){
-		if(instance == null){
-			instance = this;
-		}
-	}
+        if (doubleBack == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("Main Menu");
+            }
+        }
 
-	void UpdateGameplayController(){
-		GameController.instance.currentScore = score;
-		scoreText.text = score.ToString ();
-	}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            notification.SetActive(true);
+            doubleBack = true;
+            StartCoroutine(ShowTimer());
+        }
+    }
 
-	void InitialGameplayVariables(){
-		GameController.instance.currentScore = 0;
-		score = GameController.instance.currentScore;
-		scoreText.text = score.ToString ();
-	}
+    void CreateInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
-	IEnumerator ShowTimer(){
-		yield return new WaitForSeconds (2f);
-		doubleBack = false;
-		notification.SetActive (false);
-	}
+    void UpdateGameplayController()
+    {
+        GameController.instance.currentScore = score;
+        scoreText.text = score.ToString();
+    }
+
+    void InitialGameplayVariables()
+    {
+        GameController.instance.currentScore = 0;
+        score = GameController.instance.currentScore;
+        scoreText.text = score.ToString();
+    }
+
+    IEnumerator ShowTimer()
+    {
+        yield return new WaitForSeconds(2f);
+        doubleBack = false;
+        notification.SetActive(false);
+    }
 
 
 }
