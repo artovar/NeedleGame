@@ -56,7 +56,8 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
-
+*.zip
+PinTheNeedle_mapping.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
