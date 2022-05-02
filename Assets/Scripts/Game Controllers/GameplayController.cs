@@ -59,6 +59,7 @@ public class GameplayController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                Destroy(GameObject.Find("Target"));
                 SceneManager.LoadScene("Main Menu");
             }
         }

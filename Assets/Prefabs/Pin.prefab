@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c5cc719b8bb3742ad0a7bb6c171448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 50
   myRigidBody: {fileID: 50288419855237154}
   cameraZoom: {fileID: 9100000, guid: a237679ec42d7e448842d0041ac31004, type: 2}
   isPrepareToShoot: 0

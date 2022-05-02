@@ -52,6 +52,7 @@ public class RestartController : MonoBehaviour
 
     public void ExitButton()
     {
+        Destroy(target_save);
         SceneManager.LoadScene("Main Menu");
     }
 }

@@ -6,8 +6,6 @@ public class AdMobBanner : MonoBehaviour
 {
     private BannerView bannerView;
 
-
-
     public void Start()
     {
 

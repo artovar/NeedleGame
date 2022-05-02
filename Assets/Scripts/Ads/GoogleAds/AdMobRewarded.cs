@@ -95,6 +95,7 @@ public class AdMobRewarded : MonoBehaviour
             "HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);
 
+        
         SceneManager.LoadScene("Gameplay");
     }
 
