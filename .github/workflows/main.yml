@@ -33,7 +33,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: PinTheNeedle
-          path: build/Android
+          path: build/Android/
 
   releaseToGooglePlay:
     name: Release to the Google Play Store
@@ -50,8 +50,8 @@ jobs:
       - name: Download Android Artifact
         uses: actions/download-artifact@v2
         with:
-          name: build-Android
-          path: build/Android
+          name: PinTheNeedle
+          path: build/Android/
       - name: Add Authentication
         run: echo "$GOOGLE_PLAY_KEY_FILE" > $GOOGLE_PLAY_KEY_FILE_PATH
       - name: Set up Fastlane
