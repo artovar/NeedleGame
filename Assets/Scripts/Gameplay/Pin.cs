@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class Pin : MonoBehaviour
 {
@@ -137,12 +139,25 @@ public class Pin : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Destroy(GameObject.Find("Target"));
+        PlayGamesPlatform.Instance.RevealAchievement(GPGSIds.achievement_pin_25, (bool success) =>
+        {
+
+        });
+        PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) =>
+        {
+            // handle success or failure
+        });
         SceneManager.LoadScene("Success");
     }
 
     IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(1f);
+        PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) =>
+        {
+            // handle success or failure
+        });
+
         SceneManager.LoadScene("Failed");
     }
 
