@@ -5,23 +5,27 @@ using GooglePlayGames.BasicApi;
 public class GPGSAuth : MonoBehaviour
 {
 
-    public void Start()
-    {
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
-    }
+    public static PlayGamesPlatform platform;
 
-    internal void ProcessAuthentication(SignInStatus status)
+    void Start()
     {
-        if (status == SignInStatus.Success)
+        if (platform == null)
         {
-            // Continue with Play Games Services
+            PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().Build();
+            PlayGamesPlatform.InitializeInstance(configuration);
+            PlayGamesPlatform.DebugLogEnabled = true;
+
+            platform = PlayGamesPlatform.Activate();
+
         }
-        else
+
+        Social.Active.localUser.Authenticate(success =>
         {
-            // Disable your integration with Play Games Services or show a login button
-            // to ask users to sign-in. Clicking it should call
-            // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
-        }
+            if (success)
+            {
+                Debug.Log("Authentication Success");
+            }
+        });
     }
 }
 
