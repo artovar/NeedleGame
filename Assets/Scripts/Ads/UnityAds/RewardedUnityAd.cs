@@ -21,10 +21,6 @@ public class RewardedUnityAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
         _adUnitId = _androidAdUnitId;
 #endif
 
-        text = GameObject.FindWithTag("TextCoin").GetComponent<Text>();
-        text.text = "COINS: " + coins;
-
-
     }
 
     // Load content to the Ad Unit:
@@ -59,9 +55,6 @@ public class RewardedUnityAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
-
-            text.text = "COINS: " + ++coins;
-
             // Load another ad:
             //Advertisement.Load(_adUnitId, this);
         }
