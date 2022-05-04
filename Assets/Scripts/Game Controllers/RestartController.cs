@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class RestartController : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class RestartController : MonoBehaviour
         GameObject rewarded = GameObject.Find("RewardedAd");
         target_save.tag = "Retry";
         rewarded.GetComponent<AdMobRewarded>().RequestRewarded();
+        rewarded.GetComponent<RewardedUnityAd>().LoadAd();
 
     }
 
@@ -47,12 +49,14 @@ public class RestartController : MonoBehaviour
     {
 
         Destroy(target_save);
+        Advertisement.Banner.Hide();
         SceneManager.LoadScene("Gameplay");
     }
 
     public void ExitButton()
     {
         Destroy(target_save);
+        Advertisement.Banner.Hide();
         SceneManager.LoadScene("Main Menu");
     }
 }

@@ -14,6 +14,8 @@ public class InterstitialUnityAd : MonoBehaviour, IUnityAdsLoadListener, IUnityA
             ? _iOsAdUnitId
             : _androidAdUnitId;
 
+        this.LoadAd();
+
     }
 
     // Load content to the Ad Unit:

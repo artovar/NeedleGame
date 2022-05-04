@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
+
 
 public class GameplayController : MonoBehaviour
 {
@@ -60,6 +62,8 @@ public class GameplayController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Destroy(GameObject.Find("Target"));
+
+                Advertisement.Banner.Hide();
                 SceneManager.LoadScene("Main Menu");
             }
         }

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.Advertisements;
+
 
 public class Pin : MonoBehaviour
 {
@@ -147,6 +149,8 @@ public class Pin : MonoBehaviour
         {
             // handle success or failure
         });
+        
+        Advertisement.Banner.Hide();
         SceneManager.LoadScene("Success");
     }
 
@@ -157,7 +161,7 @@ public class Pin : MonoBehaviour
         {
             // handle success or failure
         });
-
+        Advertisement.Banner.Hide();
         SceneManager.LoadScene("Failed");
     }
 
