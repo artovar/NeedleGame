@@ -17,7 +17,7 @@ public class AdMobBanner : MonoBehaviour
     {
 
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-8120726709489839~8066191074";
+        string adUnitId = AdMobIDs.BannerID;
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-8120726709489839/3935374378";
 #else

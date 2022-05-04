@@ -27,7 +27,7 @@ public class AdMobRewarded : MonoBehaviour
 
 
 #if UNITY_ANDROID
-        adUnitId = "ca-app-pub-8120726709489839~8066191074";
+        adUnitId = AdMobIDs.RewardID;
 #elif UNITY_IPHONE
             adUnitId = "ca-app-pub-8120726709489839/4596885200";
 #else
@@ -95,7 +95,7 @@ public class AdMobRewarded : MonoBehaviour
             "HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);
 
-        
+
         SceneManager.LoadScene("Gameplay");
     }
 

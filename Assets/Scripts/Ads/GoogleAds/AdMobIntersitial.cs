@@ -18,7 +18,7 @@ public class AdMobIntersitial : MonoBehaviour
     public void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-8120726709489839~8066191074";
+        string adUnitId = AdMobIDs.InterstitialID;
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-8120726709489839/9803574882";
 #else
