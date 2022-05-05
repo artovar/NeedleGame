@@ -49,14 +49,14 @@ public class RestartController : MonoBehaviour
     {
 
         Destroy(target_save);
-        Advertisement.Banner.Hide();
+        //Advertisement.Banner.Hide();
         SceneManager.LoadScene("Gameplay");
     }
 
     public void ExitButton()
     {
         Destroy(target_save);
-        Advertisement.Banner.Hide();
+        //Advertisement.Banner.Hide();
         SceneManager.LoadScene("Main Menu");
     }
 }

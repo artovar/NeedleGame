@@ -63,7 +63,7 @@ public class GameplayController : MonoBehaviour
             {
                 Destroy(GameObject.Find("Target"));
 
-                Advertisement.Banner.Hide();
+                //Advertisement.Banner.Hide();
                 SceneManager.LoadScene("Main Menu");
             }
         }

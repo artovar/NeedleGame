@@ -1,29 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-
+using GooglePlayGames;
 public class GPGSAuth : MonoBehaviour
 {
-
     public static PlayGamesPlatform platform;
 
     void Start()
     {
         if (platform == null)
         {
-            PlayGamesClientConfiguration configuration = new PlayGamesClientConfiguration.Builder().Build();
-            PlayGamesPlatform.InitializeInstance(configuration);
-            PlayGamesPlatform.DebugLogEnabled = true;
-
+            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+            PlayGamesPlatform.InitializeInstance(config);
+            PlayGamesPlatform.DebugLogEnabled = false;
             platform = PlayGamesPlatform.Activate();
-
         }
 
-        Social.Active.localUser.Authenticate(success =>
+        ((GooglePlayGames.PlayGamesPlatform)Social.Active).localUser.Authenticate(success =>
         {
             if (success)
             {
-                Debug.Log("Authentication Success");
+                print("Login succesful");
+                Social.Active.ShowLeaderboardUI();
+            }
+            else
+            {
+                print("Login INCORRECT");
             }
         });
     }

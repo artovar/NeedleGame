@@ -71,4 +71,12 @@ public class AdMobBanner : MonoBehaviour
     {
         MonoBehaviour.print("HandleAdLeavingApplication event received");
     }
+
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    void OnDestroy()
+    {
+        this.bannerView.Destroy();
+    }
 }

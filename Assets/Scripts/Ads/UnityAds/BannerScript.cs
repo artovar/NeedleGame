@@ -79,4 +79,12 @@ public class BannerScript : MonoBehaviour
     {
         ShowBannerAd();
     }
+
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    void OnDestroy()
+    {
+        Advertisement.Banner.Hide();
+    }
 }

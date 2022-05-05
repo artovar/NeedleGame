@@ -150,7 +150,7 @@ public class Pin : MonoBehaviour
             // handle success or failure
         });
         
-        Advertisement.Banner.Hide();
+        //Advertisement.Banner.Hide();
         SceneManager.LoadScene("Success");
     }
 
@@ -161,7 +161,7 @@ public class Pin : MonoBehaviour
         {
             // handle success or failure
         });
-        Advertisement.Banner.Hide();
+        //Advertisement.Banner.Hide();
         SceneManager.LoadScene("Failed");
     }
 
