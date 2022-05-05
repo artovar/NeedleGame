@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using GooglePlayGames;
+
 
 public class InterstitialUnityAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -60,5 +62,8 @@ public class InterstitialUnityAd : MonoBehaviour, IUnityAdsLoadListener, IUnityA
 
     public void OnUnityAdsShowStart(string adUnitId) { }
     public void OnUnityAdsShowClick(string adUnitId) { }
-    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) { }
+    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement(GPGSIds.achievement_pin_25, (bool success) => { });
+    }
 }

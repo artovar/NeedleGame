@@ -141,16 +141,7 @@ public class Pin : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Destroy(GameObject.Find("Target"));
-        PlayGamesPlatform.Instance.RevealAchievement(GPGSIds.achievement_pin_25, (bool success) =>
-        {
-
-        });
-        PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) =>
-        {
-            // handle success or failure
-        });
-        
-        //Advertisement.Banner.Hide();
+        PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) => { });
         SceneManager.LoadScene("Success");
     }
 
@@ -161,7 +152,6 @@ public class Pin : MonoBehaviour
         {
             // handle success or failure
         });
-        //Advertisement.Banner.Hide();
         SceneManager.LoadScene("Failed");
     }
 

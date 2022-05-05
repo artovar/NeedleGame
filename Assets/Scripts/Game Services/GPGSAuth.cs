@@ -17,12 +17,11 @@ public class GPGSAuth : MonoBehaviour
             platform = PlayGamesPlatform.Activate();
         }
 
-        ((GooglePlayGames.PlayGamesPlatform)Social.Active).localUser.Authenticate(success =>
+        Social.Active.localUser.Authenticate(success =>
         {
             if (success)
             {
                 print("Login succesful");
-                Social.Active.ShowLeaderboardUI();
             }
             else
             {
@@ -30,5 +29,6 @@ public class GPGSAuth : MonoBehaviour
             }
         });
     }
+
 }
 
