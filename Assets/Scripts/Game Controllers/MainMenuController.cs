@@ -60,11 +60,7 @@ public class MainMenuController : MonoBehaviour
         exitPanel.SetActive(false);
     }
 
-    public void LeaderBoardButton()
-    {
-        // show leaderboard UI
-        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_max_score);
-    }
+   
 
 
 }
