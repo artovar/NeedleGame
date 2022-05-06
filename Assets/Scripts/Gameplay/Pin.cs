@@ -138,7 +138,7 @@ public class Pin : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(GameObject.Find("Target"));
         PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) => { });
-        GoogleSheets.WriteScore(PlayGamesPlatform.Instance.GetUserDisplayName(), GameController.instance.currentScore);
+        GoogleSheets.WriteScore(((PlayGamesLocalUser)Social.localUser).userName, GameController.instance.currentScore);
         SceneManager.LoadScene("Success");
     }
 
@@ -146,7 +146,7 @@ public class Pin : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) => { });
-        GoogleSheets.WriteScore(PlayGamesPlatform.Instance.GetUserDisplayName(), GameController.instance.currentScore);
+        GoogleSheets.WriteScore(((PlayGamesLocalUser)Social.localUser).userName, GameController.instance.currentScore);
         SceneManager.LoadScene("Failed");
     }
 
