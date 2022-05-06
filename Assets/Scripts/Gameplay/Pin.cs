@@ -1,12 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using GooglePlayGames;
-using UnityEngine.SocialPlatforms;
-using UnityEngine.Advertisements;
-
 
 public class Pin : MonoBehaviour
 {
@@ -142,16 +138,15 @@ public class Pin : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(GameObject.Find("Target"));
         PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) => { });
+        GoogleSheets.WriteScore(PlayGamesPlatform.Instance.GetUserDisplayName(), GameController.instance.currentScore);
         SceneManager.LoadScene("Success");
     }
 
     IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(1f);
-        PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) =>
-        {
-            // handle success or failure
-        });
+        PlayGamesPlatform.Instance.ReportScore(GameController.instance.currentScore, GPGSIds.leaderboard_max_score, (bool success) => { });
+        GoogleSheets.WriteScore(PlayGamesPlatform.Instance.GetUserDisplayName(), GameController.instance.currentScore);
         SceneManager.LoadScene("Failed");
     }
 
