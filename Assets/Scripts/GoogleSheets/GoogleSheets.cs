@@ -84,7 +84,7 @@ public static class GoogleSheets
         request.InsertDataOption = insertDataOption;
 
 
-        request.Execute(); // For async 
+        request.ExecuteAsync(); // For async 
 
 
     }
